@@ -11,4 +11,8 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'angular-example';
+
+  handleClick(event: any): void {
+    console.log('clicked from angular app', event.detail);
+  }
 }

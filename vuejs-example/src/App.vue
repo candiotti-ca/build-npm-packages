@@ -1,12 +1,21 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue';
+defineProps(['foo']);
+const emit = defineEmits(['clicked']);
+
+function emitEvent() {
+  console.log('clicked from vue component');
+  let obj = { name: 'carla' };
+  emit('clicked', obj);
+}
 </script>
 
 <template>
   <a href="https://vuejs.org/" target="_blank">
     <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
   </a>
-  <HelloWorld msg="Vue Component" />
+  <button @click="emitEvent">
+    {{ foo || 'foo is null' }}
+  </button>
 </template>
 
 <style scoped>

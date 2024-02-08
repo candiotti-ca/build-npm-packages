@@ -1,18 +1,23 @@
-import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, inject } from '@angular/core';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { RouterOutlet } from '@angular/router';
+import { DialogWrapperComponent } from './components/dialog-wrapper/dialog-wrapper.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, MatDialogModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'angular-example';
+  private dialog = inject(MatDialog);
 
-  handleClick(event: any): void {
-    console.log('clicked from angular app', event.detail);
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogWrapperComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 }

@@ -1,8 +1,6 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
+import vue from '@vitejs/plugin-vue';
+import { defineConfig } from 'vite';
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue({
     template: {
@@ -10,9 +8,9 @@ export default defineConfig({
         isCustomElement: (tag: string) => tag.includes('vuejs-example')
       }
     }
-  }), cssInjectedByJsPlugin()],
+  })],
   build: {
-    cssCodeSplit: true,
+    cssCodeSplit: false,
     lib: {
       entry: './src/main.ce.ts',
       name: 'vuejs-example',

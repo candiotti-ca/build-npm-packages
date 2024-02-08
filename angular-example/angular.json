@@ -32,7 +32,9 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/vuejs-example-cca-test/dist/vuejs-example.js"
+            ]
           },
           "configurations": {
             "production": {

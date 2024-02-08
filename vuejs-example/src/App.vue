@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import {HelloWorld} from './index'
+import HelloWorld from './components/HelloWorld.vue';
 </script>
 
 <template>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  <HelloWorld msg="Vue component" />
+  <a href="https://vuejs.org/" target="_blank">
+    <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
+  </a>
+  <HelloWorld msg="Vue Component" />
 </template>
 
 <style scoped>
@@ -16,10 +16,13 @@ import {HelloWorld} from './index'
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
 }
 </style>
+<!-- https://dev.to/nurlan_tl/tips-to-create-web-components-using-vue-3-ts-vite-3a7a -->

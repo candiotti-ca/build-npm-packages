@@ -1,32 +1,23 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import path from "path";
 import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), cssInjectedByJsPlugin()],
-  resolve: {
-    alias: {
-      "@/": new URL("./src/", import.meta.url).pathname
-    }
-  },
-  build: {
-    cssCodeSplit: true,
-    target: "esnext",
-    lib: {
-      entry: path.resolve(__dirname, "src/index.ts"),
-      name: "HelloWorld",
-      fileName: (format) => `hello-world.${format}.js`,
-    },
-
-    rollupOptions: {
-      external: ["vue"],
-      output: {
-        globals: {
-          vue: "Vue"
-        }
+  plugins: [vue({
+    template: {
+      compilerOptions: {
+        isCustomElement: (tag: string) => tag.includes('vuejs-example')
       }
     }
-  }
-});
+  }), cssInjectedByJsPlugin()],
+  build: {
+    cssCodeSplit: true,
+    lib: {
+      entry: './src/main.ce.ts',
+      name: 'vuejs-example',
+      fileName: 'vuejs-example'
+    }
+  },
+  define: { 'process.env': process.env }
+})

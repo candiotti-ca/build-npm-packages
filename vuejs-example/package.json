@@ -1,27 +1,27 @@
 {
   "name": "vuejs-example-cca-test",
   "private": false,
-  "version": "0.0.0",
+  "version": "0.0.3",
   "type": "module",
   "files": [
     "dist"
   ],
-  "main": "./dist/hello-world.umd.js",
-  "module": "./dist/hello-world.es.js",
+  "main": "./dist/vuejs-example.umd.cjs",
+  "module": "./dist/vuejs-example.js",
   "exports": {
     ".": {
-      "import": "./dist/hello-world.es.js",
-      "require": "./dist/hello-world.umd.js"
+      "import": "./dist/vuejs-example.js",
+      "require": "./dist/vuejs-example.umd.cjs"
     }
   },
-  "types": "./dist/types/index.d.ts",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
-    "preview": "vite preview",
-    "package": "vite build && vue-tsc --emitDeclarationOnly && mv dist/src dist/types"
+    "package": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
+    "@vue/web-component-wrapper": "^1.3.0",
     "vue": "^3.3.11"
   },
   "devDependencies": {
